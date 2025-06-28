@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Beni affeder misin?</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      margin-top: 50px;
+      overflow: hidden; /* Büyüyen buton taşmasın diye */
+    }
+    button {
+      padding: 20px 40px;
+      font-size: 24px;
+      margin: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border: none;
+      color: white;
+      position: relative;
+      z-index: 10;
+    }
+    #yesBtn {
+      background-color: #4ecdc4;
+      transform-origin: center center;
+    }
+    #noBtn {
+      background-color: #ff6b6b;
+    }
+    img {
+      max-width: 300px;
+      margin-top: 30px;
+      position: relative;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Beni affeder misin? 😸</h1>
+
+  <div id="buttons">
+    <button id="yesBtn">Evet</button>
+    <button id="noBtn">Hayır</button>
+  </div>
+
+  <img id="catGif" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kedi GIF" />
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const catGif = document.getElementById('catGif');
+
+    const gifs = [
+      "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
+      "https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
+      "https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif",
+      "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+      "https://media.giphy.com/media/GeimqsH0TLDt4tScGw/giphy.gif"
+    ];
+
+    let yesScale = 1;
+
+    yesBtn.addEventListener('click', () => {
+      // Yeni rastgele GIF seç
+      const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+      catGif.src = randomGif;
+    });
+
+    noBtn.addEventListener('click', () => {
+      // Evet butonunu büyüt
+      yesScale += 0.2;
+      if (yesScale > 10) yesScale = 10; // Maksimum büyüklük
+      yesBtn.style.transform = `scale(${yesScale})`;
+    });
+  </script>
+
+</body>
+</html>
